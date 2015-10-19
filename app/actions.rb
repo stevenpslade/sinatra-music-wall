@@ -11,7 +11,13 @@ end
 get '/songs/new' do
   @song = Song.new
   erb :'songs/new'
-end 
+end
+
+get '/songs/random' do
+  random_num = rand(Song.count)
+  @rand_song = Song.offset(random_num).first
+  redirect "/songs/#{@rand_song.id}"
+end
 
 get '/songs/:id' do
   @song = Song.find params[:id]
