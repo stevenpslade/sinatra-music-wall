@@ -11,9 +11,13 @@
 </p>
 
 <hr/>
-<p>
-  Other posts from this author: <%= Song.where("author = ? AND id != ?", @song.author, @song.id).select("song_title").pluck(:song_title).join(" / ") %>
-</p>
+
+<p>Other Songs:</p>
+  <ol>
+<% @other_songs.each do |item| %>
+  <li><a href="/songs/<%= item.id %>"><%= item.song_title %></a></li>
+<% end %>
+  </ol>
 
 <hr/>
 <a href="/songs">Back to All Songs</a>

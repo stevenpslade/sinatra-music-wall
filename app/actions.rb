@@ -11,10 +11,11 @@ end
 get '/songs/new' do
   @song = Song.new
   erb :'songs/new'
-end
+end 
 
 get '/songs/:id' do
   @song = Song.find params[:id]
+  @other_songs = Song.where("author = ? AND id != ? ", @song.author, @song.id)
   erb :'songs/show'
 end
 
