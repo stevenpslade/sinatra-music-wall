@@ -2,9 +2,12 @@
 
 <% @songs.each do |song| %>
   <div class="message">
-    <h3><%= song.song_title %> <small>by: <%= song.author %></small></h3>
+  <h3><a href="/songs/<%= song.id %>"><%= song.song_title %> </a></h3>
     <p>
-      <%= song.url %>
+      By: <%= song.author %>
+    </p>
+    <p>
+      <a href=<%= song.url %>><%= song.url %></a>
     </p>
   </div>
 <% end %>

@@ -1,0 +1,19 @@
+<h2>
+  Song Title: <%= @song.song_title %>
+</h2>
+
+<p>
+  by: <%= @song.author  %>
+</p>
+
+<p>
+  <a href=<%= @song.url %>><%= @song.url %></a>
+</p>
+
+<hr/>
+<p>
+  Other posts from this author: <%= Song.where("author = ? AND id != ?", @song.author, @song.id).select("song_title").pluck(:song_title).join(" / ") %>
+</p>
+
+<hr/>
+<a href="/songs">Back to All Songs</a>
