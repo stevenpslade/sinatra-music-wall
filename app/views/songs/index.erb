@@ -1,0 +1,10 @@
+<h1>Music Wall</h1>
+
+<% @songs.each do |song| %>
+  <div class="message">
+    <h3><%= song.song_title %> <small>by: <%= song.author %></small></h3>
+    <p>
+      <%= song.url %>
+    </p>
+  </div>
+<% end %>
