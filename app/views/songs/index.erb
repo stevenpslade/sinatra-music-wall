@@ -1,8 +1,14 @@
 <h1>Songs</h1>
 
 <% @songs.each do |song| %>
-  <div class="message">
-  <h3><a href="/songs/<%= song.id %>"><%= song.song_title %> </a></h3>
+<div class="media">
+  <div class="media-left">
+    <a href="/songs/<%= song.id %>">
+      <img class="media-object" src=<%= song.img_link %> alt="no image">
+    </a>
+  </div>
+  <div class="media-body">
+    <h3 class="media-heading"><a href="/songs/<%= song.id %>"><%= song.song_title %> </a></h3>
     <p>
       By: <%= song.author %>
     </p>
@@ -10,4 +16,6 @@
       <a href=<%= song.url %>><%= song.url %></a>
     </p>
   </div>
+</div>
 <% end %>
+

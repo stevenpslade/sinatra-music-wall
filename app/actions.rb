@@ -1,9 +1,15 @@
 # shareable methods
 helpers do
 
-  def current_user
+  def logged_in?
+    !!current_user
   end
 
+  def current_user
+    if cookies[:user_id]
+      User.find(cookies[:user_id])
+    end
+  end
 end
 
 # Homepage (Root path)
@@ -76,7 +82,9 @@ post '/songs' do
   @song = Song.new(
     song_title: params[:song_title],
     author: params[:author],
-    url:  params[:url]
+    img_link: params[:img_link],
+    url:  params[:url],
+    user_id: cookies[:user_id]
   )
   if @song.save
     redirect '/songs'
