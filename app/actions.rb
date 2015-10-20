@@ -1,6 +1,52 @@
+# shareable methods
+helpers do
+
+  def current_user
+  end
+
+end
+
 # Homepage (Root path)
 get '/' do
   erb :index
+end
+
+get '/login/signup' do
+  @user = User.new
+  erb :'login/signup'
+end
+
+post '/login/signup' do
+  @user = User.new(
+    first_name: params[:first_name],
+    last_name: params[:last_name],
+    email: params[:email],
+    password: params[:password]
+    )
+  if @user.save
+    cookies[:user_id] = @user.id
+    redirect '/songs'
+  else
+    erb :'login/signup'
+  end
+end
+
+get '/login/login' do
+  erb :'login/login'
+end
+
+# set cookies to create user session?
+# if you use cookies make sure they're encrypted
+# enable/set for sessions for encryptions
+post '/login/login' do
+  @user = User.find_by(email: params[:email], password: params[:password])
+  if @user
+    cookies[:user_id] = @user.id
+    redirect '/songs'
+  else
+    @error_messages = ['Invalid email or password']
+    erb :'login/login'
+  end
 end
 
 get '/songs' do

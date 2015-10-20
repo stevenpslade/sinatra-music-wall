@@ -5,7 +5,7 @@
   <div>
     <strong>Some issues with your song, please fix them:</strong>
     <ul>
-      <% @song.errors.full_songs.each do |song| %>
+      <% @song.errors.full_messages.each do |song| %>
         <li><%= song %></li>
       <% end %>
     </ul>
