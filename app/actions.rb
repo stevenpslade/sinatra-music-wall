@@ -42,6 +42,11 @@ get '/login/login' do
   erb :'login/login'
 end
 
+get '/login/logout' do
+  cookies.delete :user_id
+  redirect "login/login"
+end
+
 # set cookies to create user session?
 # if you use cookies make sure they're encrypted
 # enable/set for sessions for encryptions
