@@ -12,20 +12,43 @@
   </div>
 <% end %>
 
-<form method="post" action="/songs">
-  <div>
-    <label>Song Title:</label>
-    <input type="text" name="song_title" value="<%= @song.song_title %>">
+<form class="form-horizontal" method="post" action="/songs">
+<fieldset>
+
+<!-- Song Title input-->
+<div class="form-group">
+  <label class="col-md-4 control-label" for="textinput"></label>  
+  <div class="col-md-6">
+  <input id="textinput" name="song_title" value="<%= @song.song_title %>" type="text" placeholder="Song Title" class="form-control input-md" required="">
+    
   </div>
-  <div>
-    <label>Author:</label>
-    <input type="text" name="author" value="<%= @song.author %>">
+</div>
+
+<!-- Author input-->
+<div class="form-group">
+  <label class="col-md-4 control-label" for="textinput"></label>  
+  <div class="col-md-6">
+  <input id="textinput" name="author" value="<%= @song.author %>" type="text" placeholder="Author" class="form-control input-md" required="">
+    
   </div>
-  <div>
-    <label>URL:</label>
-    <input type="text" name="url" value="<%= @song.url %>">
+</div>
+
+<!-- Url optional input-->
+<div class="form-group">
+  <label class="col-md-4 control-label" for="textinput"></label>  
+  <div class="col-md-4">
+  <input id="textinput" name="url" value="<%= @song.url %>" type="text" placeholder="link" class="form-control input-md">
+    
   </div>
-  <div>
-    <input type="submit" value="Submit">
+</div>
+
+<!-- Button -->
+<div class="form-group">
+  <label class="col-md-4 control-label" for="singlebutton"></label>
+  <div class="col-md-4">
+    <button id="singlebutton" name="singlebutton" class="btn btn-success">Add Song</button>
   </div>
+</div>
+
+</fieldset>
 </form>

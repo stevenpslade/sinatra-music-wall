@@ -27,6 +27,7 @@ post '/login/signup' do
     cookies[:user_id] = @user.id
     redirect '/songs'
   else
+    @error_messages = ['Invalid email or password']
     erb :'login/signup'
   end
 end
