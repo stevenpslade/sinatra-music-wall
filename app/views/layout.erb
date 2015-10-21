@@ -46,8 +46,8 @@
             <li><a href="/songs">Welcome, <%= current_user.first_name %></a></li>
             <li><a href="/login/logout">Logout <span class="glyphicon glyphicon-log-out" aria-hidden="true"></span></a></li>
           <% else %>
-            <li><a href="/login/login">Login</a></li>
-            <li><a href="/login/signup">Signup</a></li>
+            <li><a href="/login/login">Login <span class="glyphicon glyphicon-log-in" aria-hidden="true"></span></a></li>
+            <li><a href="/login/signup">Signup <span class="glyphicon glyphicon-flash" aria-hidden="true"></span></a></li>
           <% end %>
       </ul>
     </div><!-- /.navbar-collapse -->

@@ -10,6 +10,15 @@ helpers do
       User.find(cookies[:user_id])
     end
   end
+
+  def getCount(song, type)
+    song.likes.where(like_type: type).count
+  end
+
+  def not_voted?(user_id, song_id)
+    !(Like.where("user_id = ? AND song_id = ?", user_id, song_id).any?)
+  end
+
 end
 
 # Homepage (Root path)
@@ -62,7 +71,7 @@ post '/login/login' do
 end
 
 get '/songs' do
-  @songs= Song.all
+  @songs = Song.find_by_sql("SELECT songs.*, COUNT(likes.song_id) AS number FROM songs LEFT JOIN likes ON songs.id = likes.song_id GROUP BY songs.id ORDER BY number DESC")
   erb :'songs/index'
 end
 
@@ -96,4 +105,18 @@ post '/songs' do
   else
     erb :'songs/new'
   end
+end
+
+get '/like/:id/:type' do
+  song = Song.find params[:id]
+    if logged_in?
+      if not_voted?(cookies[:user_id], song.id)
+        @like = Like.create(
+          user_id: cookies[:user_id],
+          song_id: song.id,
+          like_type: params[:type]
+          )
+      end
+    end
+  redirect "/songs"
 end

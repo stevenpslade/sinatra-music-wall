@@ -11,11 +11,16 @@
     <h3 class="media-heading"><a href="/songs/<%= song.id %>"><%= song.song_title %> </a></h3>
     <p>
       By: <%= song.author %>
-    </p>
-    <p>
+      <br/>
       <a href=<%= song.url %>><%= song.url %></a>
     </p>
   </div>
+<!--   upvote icons -->
+  <div>
+  <a href="/like/<%= song.id %>/fav"><span class="glyphicon glyphicon-heart-empty icon" aria-hidden="true"><%= getCount(song, 'fav') %></span></a>
+  <a href="/like/<%= song.id %>/cool"><span class="glyphicon glyphicon-sunglasses icon" aria-hidden="true"><%= getCount(song, 'cool') %></span></a>
+  <a href="/like/<%= song.id %>/hot"><span class="glyphicon glyphicon-fire icon" aria-hidden="true"><%= getCount(song, 'hot') %></span></a>
+  </div>
+  <hr/>
 </div>
 <% end %>
-

@@ -1,4 +1,13 @@
 .media-object {
-  height: 4em;
-  width: 4em;
+  height: 4.5em;
+  width: 4.5em;
+}
+
+.icon {
+  font-size: 1.7em;
+  margin-left: 0.5em;
+}
+
+.icon:hover {
+  color: red;
 }
